@@ -49,24 +49,24 @@ jobs:
           name: production-files
           path: ./dist
 
-  deployment:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: production-files
-          path: ./build
+  # deployment:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: production-files
+  #         path: ./build
 
-      - name: Check the files
-        run: ls ./build
+  #     - name: Check the files
+  #       run: ls ./build
 
-      - name: Copy files via SSH
-        uses: appleboy/scp-action@v1
-        with:
-          host: "128.24.74.209"
-          username: "asifazure"
-          password: ${{ secrets.PASSWORD }}
-          source: "./build"
-          target: docu-build
+  #     - name: Copy files via SSH
+  #       uses: appleboy/scp-action@v1
+  #       with:
+  #         host: "128.24.74.209"
+  #         username: "asifazure"
+  # password: ${{ secrets.PASSWORD }
+  #         source: "./build"
+  #         target: docu-build
